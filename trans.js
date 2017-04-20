@@ -2,6 +2,27 @@
 lw, sw, addi, jr, jal, j
 */
 const script = `
+@function ggtest(n)
+
+@treg a, b, c
+@alias r $v0
+@alias s $v1
+
+    addi %a, $zero, 42
+    addi %b, $zero, 10
+
+    @if (n > a)
+        addi %r, $zero, 42
+    @else
+        addi %r, $zero, 24
+    @endif
+
+    @while (n < b)
+        addi %n, %n, 1
+    @endwhile
+
+    @return r
+
 @function max(u, k)
 @alias m $v0
 @treg i, uiaddr, ui
